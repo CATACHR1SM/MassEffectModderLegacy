@@ -57,17 +57,9 @@ namespace MassEffectModder
         string log = "";
         int MeuitmVer;
         string softShadowsModPath;
-        string splashDemiurge;
         string splashEA;
-        string BlackCrushRemoval;
-        string splashBitmapPath;
-        string reshadePath;
-        string indirectSoundPath;
-        bool meuitmMode = false;
+        bool meuitmMode = true;
         bool OptionRepackVisible;
-        bool OptionBlackCrushVisible;
-        bool Option2kLimitVisible;
-        bool OptionReshadeVisible;
         bool OptionBikVisible;
         bool mute = false;
         int stage = 1;
@@ -79,6 +71,8 @@ namespace MassEffectModder
         static public List<string> pkgsToRepack = null;
         static public List<string> pkgsToMarker = null;
 
+        public bool MeuitmMode { get => meuitmMode; set => meuitmMode = value; }
+
         public Installer()
         {
             InitializeComponent();
@@ -86,7 +80,6 @@ namespace MassEffectModder
             mipMaps = new MipMaps();
             treeScan = new TreeScan();
             MipMaps.modsToReplace = new List<ModEntry>();
-
             // 
             // customLabelDesc
             // 
@@ -177,37 +170,11 @@ namespace MassEffectModder
             }
 
             string meuitm = installerIni.Read("MEUITM", "Main").ToLowerInvariant();
-            if (gameId == 1 && (meuitm == "true" || MeuitmVer != 0))
+            if (gameId == 1 && (meuitm == "true" || MeuitmVer != 88))
                 meuitmMode = true;
             if (meuitmMode && MeuitmVer == 0)
                 MeuitmVer = 1;
-
-            indirectSoundPath = installerIni.Read("IndirectSound", "Main").ToLowerInvariant();
-            if (indirectSoundPath != "")
-            {
-                if (!File.Exists(indirectSoundPath) || Path.GetExtension(indirectSoundPath).ToLowerInvariant() != ".zip")
-                {
-                    indirectSoundPath = "";
-                }
-            }
-
-            BlackCrushRemoval = installerIni.Read("BlackCrushCorrected", "Main").ToLowerInvariant();
-            if (BlackCrushRemoval != "")
-            {
-                if (!File.Exists(BlackCrushRemoval) || Path.GetExtension(BlackCrushRemoval).ToLowerInvariant() != ".zip")
-                {
-                    BlackCrushRemoval = "";
-                }
-            }
-
-            splashDemiurge = installerIni.Read("DemiurgeSplashVideo", "Main").ToLowerInvariant();
-            if (splashDemiurge != "")
-            {
-                if (!File.Exists(splashDemiurge) || Path.GetExtension(splashDemiurge).ToLowerInvariant() != ".bik")
-                {
-                    splashDemiurge = "";
-                }
-            }
+                      
 
             splashEA = installerIni.Read("EASplashVideo", "Main").ToLowerInvariant();
             if (splashEA != "")
@@ -217,25 +184,7 @@ namespace MassEffectModder
                     splashEA = "";
                 }
             }
-
-            splashBitmapPath = installerIni.Read("SplashBitmap", "Main").ToLowerInvariant();
-            if (splashBitmapPath != "")
-            {
-                if (!File.Exists(splashBitmapPath) || Path.GetExtension(splashBitmapPath).ToLowerInvariant() != ".bmp")
-                {
-                    splashBitmapPath = "";
-                }
-            }
-
-            reshadePath = installerIni.Read("ReShade", "Main").ToLowerInvariant();
-            if (reshadePath != "")
-            {
-                if (!File.Exists(reshadePath) || Path.GetExtension(reshadePath).ToLowerInvariant() != ".zip")
-                {
-                    reshadePath = "";
-                }
-            }
-
+            
             comboBoxMod0.Visible = comboBoxMod1.Visible = comboBoxMod2.Visible = comboBoxMod3.Visible = false;
             comboBoxMod4.Visible = comboBoxMod5.Visible = comboBoxMod6.Visible = comboBoxMod7.Visible = false;
             comboBoxMod8.Visible = comboBoxMod9.Visible = comboBoxMod10.Visible = comboBoxMod11.Visible = false;
@@ -597,44 +546,18 @@ namespace MassEffectModder
 
             customLabelDesc.Text = customLabelCurrentStatus.Text = customLabelFinalStatus.Text = "";
 
-            if (gameId == 2 || gameId == 3)
+            if (gameId == 1 || gameId == 2 || gameId == 3)
                 OptionRepackVisible = checkBoxOptionRepack.Visible = labelOptionRepack.Visible = true;
             else
                 OptionRepackVisible = checkBoxOptionRepack.Visible = labelOptionRepack.Visible = false;
-            if (gameId == 2 && BlackCrushRemoval != "")
-                OptionBlackCrushVisible = checkBoxOptionBlackCrush.Visible = labelOptionBlackCrush.Visible = true;
-            else
-                OptionBlackCrushVisible = checkBoxOptionBlackCrush.Visible = labelOptionBlackCrush.Visible = false;
-            if (gameId == 1)
-                Option2kLimitVisible = checkBoxOption2kLimit.Visible = labelOption2kLimit.Visible = true;
-            else
-                Option2kLimitVisible = checkBoxOption2kLimit.Visible = labelOption2kLimit.Visible = false;
-            if (gameId == 1 && splashDemiurge != "")
+            if (gameId == 1 && splashEA != "")
                 OptionBikVisible = checkBoxOptionBikInst.Visible = labelOptionBikinst.Visible = true;
             else
                 OptionBikVisible = checkBoxOptionBikInst.Visible = labelOptionBikinst.Visible = false;
-            if (gameId == 2 && splashEA != "")
-                OptionBikVisible = checkBoxOptionBikInst.Visible = labelOptionBikinst.Visible = true;
-            else
-                OptionBikVisible = checkBoxOptionBikInst.Visible = labelOptionBikinst.Visible = false;
-            if (gameId == 1 && reshadePath != "")
-                OptionReshadeVisible = checkBoxOptionReshade.Visible = labelOptionReshade.Visible = true;
-            else
-                OptionReshadeVisible = checkBoxOptionReshade.Visible = labelOptionReshade.Visible = false;
-
-            if (gameId == 2 && reshadePath != "")
-                OptionReshadeVisible = checkBoxOptionReshade.Visible = labelOptionReshade.Visible = true;
-            else
-                OptionReshadeVisible = checkBoxOptionReshade.Visible = labelOptionReshade.Visible = false;
 
             if (gameId == 1)
-            checkBoxOptionReshade.Checked = false;
             checkBoxOptionBikInst.Checked = true;
-
-            if (gameId == 2)
-            checkBoxOptionReshade.Checked = false;
-            checkBoxOptionBikInst.Checked = true;
-
+            
             buttonSTART.Visible = true;
             buttonNormal.Visible = true;
 
@@ -643,14 +566,8 @@ namespace MassEffectModder
             customLabelCurrentStatus.Parent = pictureBoxBG;
             labelOptions.Parent = pictureBoxBG;
             labelOptionRepack.Parent = pictureBoxBG;
-            labelOptionBlackCrush.Parent = pictureBoxBG;
-            labelOption2kLimit.Parent = pictureBoxBG;
-            labelOptionReshade.Parent = pictureBoxBG;
             labelOptionBikinst.Parent = pictureBoxBG;
             checkBoxOptionRepack.Parent = pictureBoxBG;
-            checkBoxOptionBlackCrush.Parent = pictureBoxBG;
-            checkBoxOption2kLimit.Parent = pictureBoxBG;
-            checkBoxOptionReshade.Parent = pictureBoxBG;
             checkBoxOptionBikInst.Parent = pictureBoxBG;
             labelModsSelection.Parent = pictureBoxBG;
             comboBoxMod0.Parent = comboBoxMod1.Parent = comboBoxMod2.Parent = comboBoxMod3.Parent = comboBoxMod4.Parent = pictureBoxBG;
@@ -667,7 +584,7 @@ namespace MassEffectModder
             comboBoxMod55.Parent = comboBoxMod56.Parent = comboBoxMod57.Parent = comboBoxMod58.Parent = comboBoxMod59.Parent = pictureBoxBG;
             buttonMute.Parent = pictureBoxBG;
 
-            labelOptions.Visible = OptionRepackVisible || Option2kLimitVisible || OptionReshadeVisible || OptionBikVisible || OptionBlackCrushVisible;
+            labelOptions.Visible = OptionRepackVisible || OptionBikVisible;
 
             string bgFile = installerIni.Read("BackgroundImage", "Main").ToLowerInvariant();
             if (bgFile != "")
@@ -913,72 +830,10 @@ namespace MassEffectModder
             return true;
         }
 
-        private bool installBlackCrushFix(string path)
-        {
-            IntPtr handle = IntPtr.Zero;
-            int result;
-            ulong numEntries = 0;
-            string fileName = "";
-            ulong dstLen = 0;
-            ZlibHelper.Zip zip = new ZlibHelper.Zip();
-            try
-            {
-                handle = zip.Open(path, ref numEntries, 0);
-                if (handle == IntPtr.Zero)
-                    throw new Exception();
-                for (uint i = 0; i < numEntries; i++)
-                {
-                    result = zip.GetCurrentFileInfo(handle, ref fileName, ref dstLen);
-                    if (result != 0)
-                        throw new Exception();
-                    
-                    byte[] data = new byte[dstLen];
-                    result = zip.ReadCurrentFile(handle, data, dstLen);
-                    if (result != 0)
-                    {
-                        throw new Exception();
-                    }
-
-                    string filePath = GameData.GamePath + "\\Engine\\Shaders\\" + fileName;
-                    if (File.Exists(filePath))
-                        File.Delete(filePath);
-                    using (FileStream fs = new FileStream(filePath, FileMode.CreateNew))
-                    {
-                        fs.WriteFromBuffer(data);
-                    }
-
-                    zip.GoToNextFile(handle);
-                }
-            }
-            catch
-            {
-                return false;
-            
-            }
-
-            return true;
-        }
-
-        private bool installSplashScreen(string path)
-        {
-            string filePath = GameData.bioGamePath + "\\Splash\\Splash.bmp";
-            try
-            {
-                if (File.Exists(filePath))
-                    File.Delete(filePath);
-                File.Copy(path, filePath);
-            }
-            catch
-            {
-                return false;
-            }
-
-            return true;
-        }
-
+       
         private bool installSplashVideo(string path)
         {
-            string filePath = GameData.MainData + "\\Movies\\db_standard.bik";
+            string filePath = GameData.MainData + "\\Movies\\ME_EAsig_720p_v2_raw.bik";
             try
             {
                 if (File.Exists(filePath))
@@ -992,141 +847,8 @@ namespace MassEffectModder
 
             return true;
         }
-
-        private bool installSplashVideo2(string path)
-        {
-            string filePath = GameData.bioGamePath + "\\Movies\\ME_EAsig_720p_v2_raw.bik";
-            try
-            {
-                if (File.Exists(filePath))
-                    File.Delete(filePath);
-                File.Copy(path, filePath);
-            }
-            catch
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        private bool installIndirectSoundPath(string path)
-        {
-            IntPtr handle = IntPtr.Zero;
-            int result;
-            ulong numEntries = 0;
-            string fileName = "";
-            ulong dstLen = 0;
-            ZlibHelper.Zip zip = new ZlibHelper.Zip();
-            try
-            {
-                handle = zip.Open(path, ref numEntries, 0);
-                if (handle == IntPtr.Zero)
-                    throw new Exception();
-                for (uint i = 0; i < numEntries; i++)
-                {
-                    result = zip.GetCurrentFileInfo(handle, ref fileName, ref dstLen);
-                    if (result != 0)
-                        throw new Exception();
-                    if (fileName.ToLowerInvariant() != "dsound.dll" &&
-                        fileName.ToLowerInvariant() != "dsound.ini")
-                    {
-                        continue;
-                    }
-                    byte[] data = new byte[dstLen];
-                    result = zip.ReadCurrentFile(handle, data, dstLen);
-                    if (result != 0)
-                    {
-                        throw new Exception();
-                    }
-
-                    string filePath = GameData.GamePath + "\\Binaries\\" + fileName;
-                    if (File.Exists(filePath))
-                        File.Delete(filePath);
-                    using (FileStream fs = new FileStream(filePath, FileMode.CreateNew))
-                    {
-                        fs.WriteFromBuffer(data);
-                    }
-
-                    zip.GoToNextFile(handle);
-                }
-            }
-            catch
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        private bool installReshadePath(string path)
-        {
-            IntPtr handle = IntPtr.Zero;
-            int result;
-            ulong numEntries = 0;
-            string fileName = "";
-            ulong dstLen = 0;
-            ZlibHelper.Zip zip = new ZlibHelper.Zip();
-            try
-            {
-                handle = zip.Open(path, ref numEntries, 0);
-                if (handle == IntPtr.Zero)
-                    throw new Exception();
-                for (uint i = 0; i < numEntries; i++)
-                {
-                    result = zip.GetCurrentFileInfo(handle, ref fileName, ref dstLen);
-                    if (result != 0)
-                        throw new Exception();
-                    fileName = fileName.Replace('/', '\\');
-                    string filePath = GameData.GamePath + "\\Binaries\\" + fileName;
-                    if (filePath.EndsWith("\\"))
-                    {
-                        if (!Directory.Exists(filePath))
-                            Directory.CreateDirectory(filePath);
-                        zip.GoToNextFile(handle);
-                        continue;
-                    }
-                    if (!Directory.Exists(Path.GetDirectoryName(filePath)))
-                        Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-                    byte[] data = new byte[dstLen];
-                    result = zip.ReadCurrentFile(handle, data, dstLen);
-                    if (result != 0)
-                    {
-                        throw new Exception();
-                    }
-
-                    if (File.Exists(filePath))
-                        File.Delete(filePath);
-                    using (FileStream fs = new FileStream(filePath, FileMode.CreateNew))
-                    {
-                        fs.WriteFromBuffer(data);
-                    }
-
-                    zip.GoToNextFile(handle);
-                }
-            }
-            catch
-            {
-                return false;
-            }
-
-            if (File.Exists(GameData.GamePath + "\\Binaries\\d3d9.ini"))
-            {
-                try
-                {
-                    ConfIni shaderConf = new ConfIni(GameData.GamePath + "\\Binaries\\d3d9.ini");
-                    shaderConf.Write("TextureSearchPaths", GameData.GamePath + "\\Binaries\\reshade-shaders\\Textures", "GENERAL");
-                    shaderConf.Write("EffectSearchPaths", GameData.GamePath + "\\Binaries\\reshade-shaders\\Shaders", "GENERAL");
-                    shaderConf.Write("PresetFiles", GameData.GamePath + "\\Binaries\\MassEffect.ini", "GENERAL");
-                }
-                catch
-                {
-                }
-            }
-
-            return true;
-        }
-
+        
+    
         private bool PreInstallCheck()
         {
             customLabelFinalStatus.Text = "Checking game setup...";
@@ -1832,13 +1554,10 @@ namespace MassEffectModder
             buttonNormal.Visible = false;
             buttonSTART.Visible = false;
             checkBoxOptionRepack.Visible = labelOptionRepack.Visible = false;
-            checkBoxOption2kLimit.Visible = labelOption2kLimit.Visible = false;
-            checkBoxOptionReshade.Visible = labelOptionReshade.Visible = false;
             checkBoxOptionBikInst.Visible = labelOptionBikinst.Visible = false;
-            checkBoxOptionBlackCrush.Visible = labelOptionBlackCrush.Visible = false;
             labelOptions.Visible = false;
             if (meuitmMode)
-                customLabelDesc.Text = "Installing MEUITM";
+                customLabelDesc.Text = "Installing MERLIN";
             else
                 customLabelDesc.Text = "Installing for Mass Effect" + gameId;
             comboBoxMod0.Visible = comboBoxMod1.Visible = comboBoxMod2.Visible = comboBoxMod3.Visible = false;
@@ -2023,7 +1742,6 @@ namespace MassEffectModder
             if (!exist)
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
             ConfIni engineConf = new ConfIni(path);
-            LODSettings.updateLOD((MeType)gameId, engineConf, checkBoxOption2kLimit.Checked);
             LODSettings.updateGFXSettings((MeType)gameId, engineConf, softShadowsModPath != "", meuitmMode);
             log += "Updating GFX settings finished" + Environment.NewLine + Environment.NewLine;
 
@@ -2038,21 +1756,11 @@ namespace MassEffectModder
                     errors += "Soft Shadows mod failed to install!\n";
                 }
             }
+                    
 
-            if (gameId == 1 && splashBitmapPath != "")
+            if (gameId == 1 && splashEA != "" && checkBoxOptionBikInst.Checked)
             {
-                if (installSplashScreen(splashBitmapPath))
-                    log += "Splash screen mod installed." + Environment.NewLine + Environment.NewLine;
-                else
-                {
-                    log += "Splash mod failed to install!" + Environment.NewLine + Environment.NewLine;
-                    errors += "Splash mod failed to install!\n";
-                }
-            }
-
-            if (gameId == 1 && splashDemiurge != "" && checkBoxOptionBikInst.Checked)
-            {
-                if (installSplashVideo(splashDemiurge))
+                if (installSplashVideo(splashEA))
                     log += "Splash video mod installed." + Environment.NewLine + Environment.NewLine;
                 else
                 {
@@ -2061,49 +1769,7 @@ namespace MassEffectModder
                 }
             }
 
-            if (gameId == 2 && splashEA != "" && checkBoxOptionBikInst.Checked)
-            {
-                if (installSplashVideo2(splashEA))
-                    log += "Splash video mod installed." + Environment.NewLine + Environment.NewLine;
-                else
-                {
-                    log += "Splash video mod failed to install!" + Environment.NewLine + Environment.NewLine;
-                    errors += "Splash video mod failed to install!\n";
-                }
-            }
-
-            if (gameId == 2 && BlackCrushRemoval != "" && checkBoxOptionBlackCrush.Checked)
-            {
-                if (installBlackCrushFix(BlackCrushRemoval))
-                    log += "Black Crush Removal mod installed." + Environment.NewLine + Environment.NewLine;
-                else
-                {
-                    log += "Black crush Removal mod failed to install!" + Environment.NewLine + Environment.NewLine;
-                    errors += "Black crush Removal mod failed to install!\n";
-                }
-            }
-
-            if (gameId == 1 && reshadePath != "" && checkBoxOptionReshade.Checked)
-            {
-                if (installReshadePath(reshadePath))
-                    log += "ReShade installed." + Environment.NewLine + Environment.NewLine;
-                else
-                {
-                    log += "ReShade failed to install!" + Environment.NewLine + Environment.NewLine;
-                    errors += "ReShade failed to install!\n";
-                }
-            }
-
-            if (gameId == 2 && reshadePath != "" && checkBoxOptionReshade.Checked)
-            {
-                if (installReshadePath(reshadePath))
-                    log += "ReShade installed." + Environment.NewLine + Environment.NewLine;
-                else
-                {
-                    log += "ReShade failed to install!" + Environment.NewLine + Environment.NewLine;
-                    errors += "ReShade failed to install!\n";
-                }
-            }
+           
 
             var time = Misc.stopTimer();
             log += "Installation finished. Process total time: " + Misc.getTimerFormat(time) + Environment.NewLine;

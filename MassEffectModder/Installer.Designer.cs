@@ -70,14 +70,10 @@
             this.comboBoxMod6 = new System.Windows.Forms.ComboBox();
             this.comboBoxMod7 = new System.Windows.Forms.ComboBox();
             this.comboBoxMod8 = new System.Windows.Forms.ComboBox();
-            this.labelOptionReshade = new System.Windows.Forms.Label();
-            this.checkBoxOptionReshade = new System.Windows.Forms.CheckBox();
             this.labelOptionBikinst = new System.Windows.Forms.Label();
             this.checkBoxOptionBikInst = new System.Windows.Forms.CheckBox();
             this.labelOptionRepack = new System.Windows.Forms.Label();
             this.checkBoxOptionRepack = new System.Windows.Forms.CheckBox();
-            this.labelOption2kLimit = new System.Windows.Forms.Label();
-            this.checkBoxOption2kLimit = new System.Windows.Forms.CheckBox();
             this.comboBoxMod14 = new System.Windows.Forms.ComboBox();
             this.comboBoxMod13 = new System.Windows.Forms.ComboBox();
             this.comboBoxMod12 = new System.Windows.Forms.ComboBox();
@@ -129,8 +125,6 @@
             this.comboBoxMod47 = new System.Windows.Forms.ComboBox();
             this.comboBoxMod46 = new System.Windows.Forms.ComboBox();
             this.comboBoxMod45 = new System.Windows.Forms.ComboBox();
-            this.checkBoxOptionBlackCrush = new System.Windows.Forms.CheckBox();
-            this.labelOptionBlackCrush = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBG)).BeginInit();
             this.SuspendLayout();
             // 
@@ -168,7 +162,7 @@
             // 
             this.buttonSTART.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonSTART.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonSTART.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(53)))), ((int)(((byte)(39)))));
+            this.buttonSTART.BackColor = System.Drawing.Color.CornflowerBlue;
             this.buttonSTART.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonSTART.Font = new System.Drawing.Font("Mass Effect Game 123", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSTART.ForeColor = System.Drawing.Color.White;
@@ -229,7 +223,7 @@
             this.labelDesc.BackColor = System.Drawing.Color.Transparent;
             this.labelDesc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelDesc.Font = new System.Drawing.Font("Mass Effect Game 123", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(53)))), ((int)(((byte)(39)))));
+            this.labelDesc.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.labelDesc.Location = new System.Drawing.Point(152, 164);
             this.labelDesc.Name = "labelDesc";
             this.labelDesc.Size = new System.Drawing.Size(956, 37);
@@ -272,11 +266,11 @@
             this.labelModsSelection.BackColor = System.Drawing.Color.Black;
             this.labelModsSelection.Font = new System.Drawing.Font("Mass Effect Game 123", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelModsSelection.ForeColor = System.Drawing.Color.White;
-            this.labelModsSelection.Location = new System.Drawing.Point(310, 71);
+            this.labelModsSelection.Location = new System.Drawing.Point(366, 72);
             this.labelModsSelection.Name = "labelModsSelection";
-            this.labelModsSelection.Size = new System.Drawing.Size(651, 24);
+            this.labelModsSelection.Size = new System.Drawing.Size(524, 24);
             this.labelModsSelection.TabIndex = 61;
-            this.labelModsSelection.Text = "Pick Texture Options From the Dropdowns:";
+            this.labelModsSelection.Text = "Pick Options From the Dropdowns:";
             this.labelModsSelection.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // comboBoxMod0
@@ -443,33 +437,6 @@
             this.comboBoxMod8.TabIndex = 70;
             this.comboBoxMod8.TabStop = false;
             // 
-            // labelOptionReshade
-            // 
-            this.labelOptionReshade.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelOptionReshade.AutoSize = true;
-            this.labelOptionReshade.BackColor = System.Drawing.Color.Black;
-            this.labelOptionReshade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelOptionReshade.Font = new System.Drawing.Font("Mass Effect Game 123", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOptionReshade.ForeColor = System.Drawing.Color.White;
-            this.labelOptionReshade.Location = new System.Drawing.Point(790, 644);
-            this.labelOptionReshade.Name = "labelOptionReshade";
-            this.labelOptionReshade.Size = new System.Drawing.Size(333, 20);
-            this.labelOptionReshade.TabIndex = 75;
-            this.labelOptionReshade.Text = "Install MEUITM ReShade";
-            // 
-            // checkBoxOptionReshade
-            // 
-            this.checkBoxOptionReshade.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBoxOptionReshade.BackColor = System.Drawing.Color.Transparent;
-            this.checkBoxOptionReshade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxOptionReshade.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBoxOptionReshade.Location = new System.Drawing.Point(770, 650);
-            this.checkBoxOptionReshade.Name = "checkBoxOptionReshade";
-            this.checkBoxOptionReshade.Size = new System.Drawing.Size(14, 13);
-            this.checkBoxOptionReshade.TabIndex = 74;
-            this.checkBoxOptionReshade.TabStop = false;
-            this.checkBoxOptionReshade.UseVisualStyleBackColor = false;
-            // 
             // labelOptionBikinst
             // 
             this.labelOptionBikinst.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -480,9 +447,9 @@
             this.labelOptionBikinst.ForeColor = System.Drawing.Color.White;
             this.labelOptionBikinst.Location = new System.Drawing.Point(125, 619);
             this.labelOptionBikinst.Name = "labelOptionBikinst";
-            this.labelOptionBikinst.Size = new System.Drawing.Size(371, 20);
+            this.labelOptionBikinst.Size = new System.Drawing.Size(345, 20);
             this.labelOptionBikinst.TabIndex = 77;
-            this.labelOptionBikinst.Text = "Install MEUITM2 Intro Video";
+            this.labelOptionBikinst.Text = "Install MERLIN Intro Video";
             // 
             // checkBoxOptionBikInst
             // 
@@ -524,33 +491,6 @@
             this.checkBoxOptionRepack.TabIndex = 78;
             this.checkBoxOptionRepack.TabStop = false;
             this.checkBoxOptionRepack.UseVisualStyleBackColor = false;
-            // 
-            // labelOption2kLimit
-            // 
-            this.labelOption2kLimit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelOption2kLimit.AutoSize = true;
-            this.labelOption2kLimit.BackColor = System.Drawing.Color.Transparent;
-            this.labelOption2kLimit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelOption2kLimit.Font = new System.Drawing.Font("Mass Effect Game 123", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOption2kLimit.ForeColor = System.Drawing.Color.White;
-            this.labelOption2kLimit.Location = new System.Drawing.Point(792, 619);
-            this.labelOption2kLimit.Name = "labelOption2kLimit";
-            this.labelOption2kLimit.Size = new System.Drawing.Size(273, 20);
-            this.labelOption2kLimit.TabIndex = 81;
-            this.labelOption2kLimit.Text = "Limit Textures to 2K";
-            // 
-            // checkBoxOption2kLimit
-            // 
-            this.checkBoxOption2kLimit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBoxOption2kLimit.BackColor = System.Drawing.Color.Transparent;
-            this.checkBoxOption2kLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxOption2kLimit.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBoxOption2kLimit.Location = new System.Drawing.Point(770, 623);
-            this.checkBoxOption2kLimit.Name = "checkBoxOption2kLimit";
-            this.checkBoxOption2kLimit.Size = new System.Drawing.Size(16, 13);
-            this.checkBoxOption2kLimit.TabIndex = 80;
-            this.checkBoxOption2kLimit.TabStop = false;
-            this.checkBoxOption2kLimit.UseVisualStyleBackColor = false;
             // 
             // comboBoxMod14
             // 
@@ -1472,33 +1412,6 @@
             this.comboBoxMod45.TabIndex = 118;
             this.comboBoxMod45.TabStop = false;
             // 
-            // checkBoxOptionBlackCrush
-            // 
-            this.checkBoxOptionBlackCrush.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBoxOptionBlackCrush.BackColor = System.Drawing.Color.Transparent;
-            this.checkBoxOptionBlackCrush.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxOptionBlackCrush.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBoxOptionBlackCrush.Location = new System.Drawing.Point(770, 623);
-            this.checkBoxOptionBlackCrush.Name = "checkBoxOptionBlackCrush";
-            this.checkBoxOptionBlackCrush.Size = new System.Drawing.Size(14, 13);
-            this.checkBoxOptionBlackCrush.TabIndex = 133;
-            this.checkBoxOptionBlackCrush.TabStop = false;
-            this.checkBoxOptionBlackCrush.UseVisualStyleBackColor = false;
-            // 
-            // labelOptionBlackCrush
-            // 
-            this.labelOptionBlackCrush.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelOptionBlackCrush.AutoSize = true;
-            this.labelOptionBlackCrush.BackColor = System.Drawing.Color.Black;
-            this.labelOptionBlackCrush.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelOptionBlackCrush.Font = new System.Drawing.Font("Mass Effect Game 123", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOptionBlackCrush.ForeColor = System.Drawing.Color.White;
-            this.labelOptionBlackCrush.Location = new System.Drawing.Point(792, 619);
-            this.labelOptionBlackCrush.Name = "labelOptionBlackCrush";
-            this.labelOptionBlackCrush.Size = new System.Drawing.Size(275, 20);
-            this.labelOptionBlackCrush.TabIndex = 134;
-            this.labelOptionBlackCrush.Text = "Remove Black Crush";
-            // 
             // Installer
             // 
             this.AllowDrop = true;
@@ -1507,12 +1420,8 @@
             this.BackColor = System.Drawing.SystemColors.Desktop;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.checkBoxOptionBlackCrush);
-            this.Controls.Add(this.labelOptionBlackCrush);
             this.Controls.Add(this.checkBoxOptionBikInst);
-            this.Controls.Add(this.checkBoxOptionReshade);
             this.Controls.Add(this.labelOptionBikinst);
-            this.Controls.Add(this.labelOptionReshade);
             this.Controls.Add(this.comboBoxMod45);
             this.Controls.Add(this.comboBoxMod30);
             this.Controls.Add(this.comboBoxMod15);
@@ -1573,8 +1482,6 @@
             this.Controls.Add(this.comboBoxMod18);
             this.Controls.Add(this.comboBoxMod17);
             this.Controls.Add(this.comboBoxMod16);
-            this.Controls.Add(this.labelOption2kLimit);
-            this.Controls.Add(this.checkBoxOption2kLimit);
             this.Controls.Add(this.labelOptionRepack);
             this.Controls.Add(this.checkBoxOptionRepack);
             this.Controls.Add(this.labelModsSelection);
@@ -1590,7 +1497,7 @@
             this.Font = new System.Drawing.Font("Mass Effect Game 123", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(3830, 2131);
-            this.MinimumSize = new System.Drawing.Size(1280, 720);
+            this.MinimumSize = new System.Drawing.Size(1278, 678);
             this.Name = "Installer";
             this.Text = "MEUITM2 Installer";
             this.Load += new System.EventHandler(this.Installer_Load);
@@ -1620,14 +1527,10 @@
         private System.Windows.Forms.ComboBox comboBoxMod6;
         private System.Windows.Forms.ComboBox comboBoxMod7;
         private System.Windows.Forms.ComboBox comboBoxMod8;
-        private System.Windows.Forms.Label labelOptionReshade;
-        private System.Windows.Forms.CheckBox checkBoxOptionReshade;
         private System.Windows.Forms.Label labelOptionBikinst;
         private System.Windows.Forms.CheckBox checkBoxOptionBikInst;
         private System.Windows.Forms.Label labelOptionRepack;
         private System.Windows.Forms.CheckBox checkBoxOptionRepack;
-        private System.Windows.Forms.Label labelOption2kLimit;
-        private System.Windows.Forms.CheckBox checkBoxOption2kLimit;
         private System.Windows.Forms.ComboBox comboBoxMod14;
         private System.Windows.Forms.ComboBox comboBoxMod13;
         private System.Windows.Forms.ComboBox comboBoxMod12;
@@ -1679,7 +1582,5 @@
         private System.Windows.Forms.ComboBox comboBoxMod47;
         private System.Windows.Forms.ComboBox comboBoxMod46;
         private System.Windows.Forms.ComboBox comboBoxMod45;
-        private System.Windows.Forms.CheckBox checkBoxOptionBlackCrush;
-        private System.Windows.Forms.Label labelOptionBlackCrush;
     }
 }

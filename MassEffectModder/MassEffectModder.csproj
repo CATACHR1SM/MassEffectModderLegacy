@@ -58,7 +58,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>meuitm2.ico</ApplicationIcon>
+    <ApplicationIcon>meuitm.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
@@ -194,7 +194,8 @@
     <EmbeddedResource Include="Dlls\zlibwrapper.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="meuitm2.ico" />
+    <Content Include="meuitm.ico" />
+    <None Include="Resources\%24this.Icon.ico" />
     <EmbeddedResource Include="Resources\me1_bg.jpg" />
     <EmbeddedResource Include="Resources\me2_bg.jpg" />
     <EmbeddedResource Include="Resources\me3_bg.jpg" />
