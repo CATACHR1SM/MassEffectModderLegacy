@@ -58,13 +58,15 @@ namespace MassEffectModder
         int MeuitmVer;
         string softShadowsModPath;
         string splashDemiurge;
+        string splashEA;
+        string BlackCrushRemoval;
         string splashBitmapPath;
         string reshadePath;
         string indirectSoundPath;
         bool meuitmMode = false;
         bool OptionRepackVisible;
+        bool OptionBlackCrushVisible;
         bool Option2kLimitVisible;
-        bool OptionIndirectSoundVisible;
         bool OptionReshadeVisible;
         bool OptionBikVisible;
         bool mute = false;
@@ -98,7 +100,7 @@ namespace MassEffectModder
             customLabelDesc.Name = "customLabelDesc";
             customLabelDesc.Size = labelDesc.Size;
             customLabelDesc.TextAlign = labelDesc.TextAlign;
-            customLabelDesc.Visible = true;
+            customLabelDesc.Visible = false;
             Controls.Add(customLabelDesc);
             // 
             // customLabelCurrentStatus
@@ -113,7 +115,7 @@ namespace MassEffectModder
             customLabelCurrentStatus.Name = "customLabelCurrentStatus";
             customLabelCurrentStatus.Size = labelCurrentStatus.Size;
             customLabelCurrentStatus.TextAlign = labelCurrentStatus.TextAlign;
-            customLabelCurrentStatus.Visible = true;
+            customLabelCurrentStatus.Visible = false;
             Controls.Add(customLabelCurrentStatus);
             // 
             // customLabelDesc
@@ -128,7 +130,7 @@ namespace MassEffectModder
             customLabelFinalStatus.Name = "customLabelFinalStatus";
             customLabelFinalStatus.Size = labelFinalStatus.Size;
             customLabelFinalStatus.TextAlign = labelFinalStatus.TextAlign;
-            customLabelFinalStatus.Visible = true;
+            customLabelFinalStatus.Visible = false;
             Controls.Add(customLabelFinalStatus);
         }
 
@@ -189,12 +191,30 @@ namespace MassEffectModder
                 }
             }
 
+            BlackCrushRemoval = installerIni.Read("BlackCrushCorrected", "Main").ToLowerInvariant();
+            if (BlackCrushRemoval != "")
+            {
+                if (!File.Exists(BlackCrushRemoval) || Path.GetExtension(BlackCrushRemoval).ToLowerInvariant() != ".zip")
+                {
+                    BlackCrushRemoval = "";
+                }
+            }
+
             splashDemiurge = installerIni.Read("DemiurgeSplashVideo", "Main").ToLowerInvariant();
             if (splashDemiurge != "")
             {
                 if (!File.Exists(splashDemiurge) || Path.GetExtension(splashDemiurge).ToLowerInvariant() != ".bik")
                 {
                     splashDemiurge = "";
+                }
+            }
+
+            splashEA = installerIni.Read("EASplashVideo", "Main").ToLowerInvariant();
+            if (splashEA != "")
+            {
+                if (!File.Exists(splashEA) || Path.GetExtension(splashEA).ToLowerInvariant() != ".bik")
+                {
+                    splashEA = "";
                 }
             }
 
@@ -218,11 +238,23 @@ namespace MassEffectModder
 
             comboBoxMod0.Visible = comboBoxMod1.Visible = comboBoxMod2.Visible = comboBoxMod3.Visible = false;
             comboBoxMod4.Visible = comboBoxMod5.Visible = comboBoxMod6.Visible = comboBoxMod7.Visible = false;
-            comboBoxMod8.Visible = comboBoxMod9.Visible = false;
+            comboBoxMod8.Visible = comboBoxMod9.Visible = comboBoxMod10.Visible = comboBoxMod11.Visible = false;
+            comboBoxMod12.Visible = comboBoxMod13.Visible = comboBoxMod14.Visible = comboBoxMod15.Visible = false;
+            comboBoxMod16.Visible = comboBoxMod17.Visible = comboBoxMod18.Visible = comboBoxMod19.Visible = false;
+            comboBoxMod20.Visible = comboBoxMod21.Visible = comboBoxMod22.Visible = comboBoxMod23.Visible = false;
+            comboBoxMod24.Visible = comboBoxMod25.Visible = comboBoxMod26.Visible = comboBoxMod27.Visible = false;
+            comboBoxMod28.Visible = comboBoxMod29.Visible = comboBoxMod30.Visible = comboBoxMod31.Visible = false;
+            comboBoxMod32.Visible = comboBoxMod33.Visible = comboBoxMod34.Visible = comboBoxMod35.Visible = false;
+            comboBoxMod36.Visible = comboBoxMod37.Visible = comboBoxMod38.Visible = comboBoxMod39.Visible = false;
+            comboBoxMod40.Visible = comboBoxMod41.Visible = comboBoxMod42.Visible = comboBoxMod43.Visible = false;
+            comboBoxMod44.Visible = comboBoxMod45.Visible = comboBoxMod46.Visible = comboBoxMod47.Visible = false;
+            comboBoxMod48.Visible = comboBoxMod49.Visible = comboBoxMod50.Visible = comboBoxMod51.Visible = false;
+            comboBoxMod52.Visible = comboBoxMod53.Visible = comboBoxMod54.Visible = comboBoxMod55.Visible = false;
+            comboBoxMod56.Visible = comboBoxMod57.Visible = comboBoxMod58.Visible = comboBoxMod59.Visible = false;
 
             allMemMods = new List<string>();
             modsSelection = new List<ModSelection>();
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 60; i++)
             {
                 ModSelection modSelect = new ModSelection();
                 modSelect.files = new List<string>();
@@ -303,6 +335,257 @@ namespace MassEffectModder
                             comboBoxMod9.Visible = true;
                             comboBoxMod9.SelectedIndex = 0;
                             break;
+                        case 11:
+                            comboBoxMod10.Items.Add(description);
+                            comboBoxMod10.Visible = true;
+                            comboBoxMod10.SelectedIndex = 0;
+                            break;
+                        case 12:
+                            comboBoxMod11.Items.Add(description);
+                            comboBoxMod11.Visible = true;
+                            comboBoxMod11.SelectedIndex = 0;
+                            break;
+                        case 13:
+                            comboBoxMod12.Items.Add(description);
+                            comboBoxMod12.Visible = true;
+                            comboBoxMod12.SelectedIndex = 0;
+                            break;
+                        case 14:
+                            comboBoxMod13.Items.Add(description);
+                            comboBoxMod13.Visible = true;
+                            comboBoxMod13.SelectedIndex = 0;
+                            break;
+                        case 15:
+                            comboBoxMod14.Items.Add(description);
+                            comboBoxMod14.Visible = true;
+                            comboBoxMod14.SelectedIndex = 0;
+                            break;
+                        case 16:
+                            comboBoxMod15.Items.Add(description);
+                            comboBoxMod15.Visible = true;
+                            comboBoxMod15.SelectedIndex = 0;
+                            break;
+                        case 17:
+                            comboBoxMod16.Items.Add(description);
+                            comboBoxMod16.Visible = true;
+                            comboBoxMod16.SelectedIndex = 0;
+                            break;
+                        case 18:
+                            comboBoxMod17.Items.Add(description);
+                            comboBoxMod17.Visible = true;
+                            comboBoxMod17.SelectedIndex = 0;
+                            break;
+                        case 19:
+                            comboBoxMod18.Items.Add(description);
+                            comboBoxMod18.Visible = true;
+                            comboBoxMod18.SelectedIndex = 0;
+                            break;
+                        case 20:
+                            comboBoxMod19.Items.Add(description);
+                            comboBoxMod19.Visible = true;
+                            comboBoxMod19.SelectedIndex = 0;
+                            break;
+                        case 21:
+                            comboBoxMod20.Items.Add(description);
+                            comboBoxMod20.Visible = true;
+                            comboBoxMod20.SelectedIndex = 0;
+                            break;
+                        case 22:
+                            comboBoxMod21.Items.Add(description);
+                            comboBoxMod21.Visible = true;
+                            comboBoxMod21.SelectedIndex = 0;
+                            break;
+                        case 23:
+                            comboBoxMod22.Items.Add(description);
+                            comboBoxMod22.Visible = true;
+                            comboBoxMod22.SelectedIndex = 0;
+                            break;
+                        case 24:
+                            comboBoxMod23.Items.Add(description);
+                            comboBoxMod23.Visible = true;
+                            comboBoxMod23.SelectedIndex = 0;
+                            break;
+                        case 25:
+                            comboBoxMod24.Items.Add(description);
+                            comboBoxMod24.Visible = true;
+                            comboBoxMod24.SelectedIndex = 0;
+                            break;
+                        case 26:
+                            comboBoxMod25.Items.Add(description);
+                            comboBoxMod25.Visible = true;
+                            comboBoxMod25.SelectedIndex = 0;
+                            break;
+                        case 27:
+                            comboBoxMod26.Items.Add(description);
+                            comboBoxMod26.Visible = true;
+                            comboBoxMod26.SelectedIndex = 0;
+                            break;
+                        case 28:
+                            comboBoxMod27.Items.Add(description);
+                            comboBoxMod27.Visible = true;
+                            comboBoxMod27.SelectedIndex = 0;
+                            break;
+                        case 29:
+                            comboBoxMod28.Items.Add(description);
+                            comboBoxMod28.Visible = true;
+                            comboBoxMod28.SelectedIndex = 0;
+                            break;
+                        case 30:
+                            comboBoxMod29.Items.Add(description);
+                            comboBoxMod29.Visible = true;
+                            comboBoxMod29.SelectedIndex = 0;
+                            break;
+                        case 31:
+                            comboBoxMod30.Items.Add(description);
+                            comboBoxMod30.Visible = true;
+                            comboBoxMod30.SelectedIndex = 0;
+                            break;
+                        case 32:
+                            comboBoxMod31.Items.Add(description);
+                            comboBoxMod31.Visible = true;
+                            comboBoxMod31.SelectedIndex = 0;
+                            break;
+                        case 33:
+                            comboBoxMod32.Items.Add(description);
+                            comboBoxMod32.Visible = true;
+                            comboBoxMod32.SelectedIndex = 0;
+                            break;
+                        case 34:
+                            comboBoxMod33.Items.Add(description);
+                            comboBoxMod33.Visible = true;
+                            comboBoxMod33.SelectedIndex = 0;
+                            break;
+                        case 35:
+                            comboBoxMod34.Items.Add(description);
+                            comboBoxMod34.Visible = true;
+                            comboBoxMod34.SelectedIndex = 0;
+                            break;
+                        case 36:
+                            comboBoxMod35.Items.Add(description);
+                            comboBoxMod35.Visible = true;
+                            comboBoxMod35.SelectedIndex = 0;
+                            break;
+                        case 37:
+                            comboBoxMod36.Items.Add(description);
+                            comboBoxMod36.Visible = true;
+                            comboBoxMod36.SelectedIndex = 0;
+                            break;
+                        case 38:
+                            comboBoxMod37.Items.Add(description);
+                            comboBoxMod37.Visible = true;
+                            comboBoxMod37.SelectedIndex = 0;
+                            break;
+                        case 39:
+                            comboBoxMod38.Items.Add(description);
+                            comboBoxMod38.Visible = true;
+                            comboBoxMod38.SelectedIndex = 0;
+                            break;
+                        case 40:
+                            comboBoxMod39.Items.Add(description);
+                            comboBoxMod39.Visible = true;
+                            comboBoxMod39.SelectedIndex = 0;
+                            break;
+                        case 41:
+                            comboBoxMod40.Items.Add(description);
+                            comboBoxMod40.Visible = true;
+                            comboBoxMod40.SelectedIndex = 0;
+                            break;
+                        case 42:
+                            comboBoxMod41.Items.Add(description);
+                            comboBoxMod41.Visible = true;
+                            comboBoxMod41.SelectedIndex = 0;
+                            break;
+                        case 43:
+                            comboBoxMod42.Items.Add(description);
+                            comboBoxMod42.Visible = true;
+                            comboBoxMod42.SelectedIndex = 0;
+                            break;
+                        case 44:
+                            comboBoxMod43.Items.Add(description);
+                            comboBoxMod43.Visible = true;
+                            comboBoxMod43.SelectedIndex = 0;
+                            break;
+                        case 45:
+                            comboBoxMod44.Items.Add(description);
+                            comboBoxMod44.Visible = true;
+                            comboBoxMod44.SelectedIndex = 0;
+                            break;
+                        case 46:
+                            comboBoxMod45.Items.Add(description);
+                            comboBoxMod45.Visible = true;
+                            comboBoxMod45.SelectedIndex = 0;
+                            break;
+                        case 47:
+                            comboBoxMod46.Items.Add(description);
+                            comboBoxMod46.Visible = true;
+                            comboBoxMod46.SelectedIndex = 0;
+                            break;
+                        case 48:
+                            comboBoxMod47.Items.Add(description);
+                            comboBoxMod47.Visible = true;
+                            comboBoxMod47.SelectedIndex = 0;
+                            break;
+                        case 49:
+                            comboBoxMod48.Items.Add(description);
+                            comboBoxMod48.Visible = true;
+                            comboBoxMod48.SelectedIndex = 0;
+                            break;
+                        case 50:
+                            comboBoxMod49.Items.Add(description);
+                            comboBoxMod49.Visible = true;
+                            comboBoxMod49.SelectedIndex = 0;
+                            break;
+                        case 51:
+                            comboBoxMod50.Items.Add(description);
+                            comboBoxMod50.Visible = true;
+                            comboBoxMod50.SelectedIndex = 0;
+                            break;
+                        case 52:
+                            comboBoxMod51.Items.Add(description);
+                            comboBoxMod51.Visible = true;
+                            comboBoxMod51.SelectedIndex = 0;
+                            break;
+                        case 53:
+                            comboBoxMod52.Items.Add(description);
+                            comboBoxMod52.Visible = true;
+                            comboBoxMod52.SelectedIndex = 0;
+                            break;
+                        case 54:
+                            comboBoxMod53.Items.Add(description);
+                            comboBoxMod53.Visible = true;
+                            comboBoxMod53.SelectedIndex = 0;
+                            break;
+                        case 55:
+                            comboBoxMod54.Items.Add(description);
+                            comboBoxMod54.Visible = true;
+                            comboBoxMod54.SelectedIndex = 0;
+                            break;
+                        case 56:
+                            comboBoxMod55.Items.Add(description);
+                            comboBoxMod55.Visible = true;
+                            comboBoxMod55.SelectedIndex = 0;
+                            break;
+                        case 57:
+                            comboBoxMod56.Items.Add(description);
+                            comboBoxMod56.Visible = true;
+                            comboBoxMod56.SelectedIndex = 0;
+                            break;
+                        case 58:
+                            comboBoxMod57.Items.Add(description);
+                            comboBoxMod57.Visible = true;
+                            comboBoxMod57.SelectedIndex = 0;
+                            break;
+                        case 59:
+                            comboBoxMod58.Items.Add(description);
+                            comboBoxMod58.Visible = true;
+                            comboBoxMod58.SelectedIndex = 0;
+                            break;
+                        case 60:
+                            comboBoxMod59.Items.Add(description);
+                            comboBoxMod59.Visible = true;
+                            comboBoxMod59.SelectedIndex = 0;
+                            break;
+
                     }
                 }
             }
@@ -318,27 +601,39 @@ namespace MassEffectModder
                 OptionRepackVisible = checkBoxOptionRepack.Visible = labelOptionRepack.Visible = true;
             else
                 OptionRepackVisible = checkBoxOptionRepack.Visible = labelOptionRepack.Visible = false;
+            if (gameId == 2 && BlackCrushRemoval != "")
+                OptionBlackCrushVisible = checkBoxOptionBlackCrush.Visible = labelOptionBlackCrush.Visible = true;
+            else
+                OptionBlackCrushVisible = checkBoxOptionBlackCrush.Visible = labelOptionBlackCrush.Visible = false;
             if (gameId == 1)
                 Option2kLimitVisible = checkBoxOption2kLimit.Visible = labelOption2kLimit.Visible = true;
             else
                 Option2kLimitVisible = checkBoxOption2kLimit.Visible = labelOption2kLimit.Visible = false;
             if (gameId == 1 && splashDemiurge != "")
-                OptionBikVisible = checkBoxOptionBik.Visible = labelOptionBik.Visible = true;
+                OptionBikVisible = checkBoxOptionBikInst.Visible = labelOptionBikinst.Visible = true;
             else
-                OptionBikVisible = checkBoxOptionBik.Visible = labelOptionBik.Visible = false;
-            if (gameId == 1 && indirectSoundPath != "")
-                OptionIndirectSoundVisible = checkBoxOptionIndirectSound.Visible = labelOptionIndirectSound.Visible = true;
+                OptionBikVisible = checkBoxOptionBikInst.Visible = labelOptionBikinst.Visible = false;
+            if (gameId == 2 && splashEA != "")
+                OptionBikVisible = checkBoxOptionBikInst.Visible = labelOptionBikinst.Visible = true;
             else
-                OptionIndirectSoundVisible = checkBoxOptionIndirectSound.Visible = labelOptionIndirectSound.Visible = false;
+                OptionBikVisible = checkBoxOptionBikInst.Visible = labelOptionBikinst.Visible = false;
             if (gameId == 1 && reshadePath != "")
                 OptionReshadeVisible = checkBoxOptionReshade.Visible = labelOptionReshade.Visible = true;
             else
                 OptionReshadeVisible = checkBoxOptionReshade.Visible = labelOptionReshade.Visible = false;
 
+            if (gameId == 2 && reshadePath != "")
+                OptionReshadeVisible = checkBoxOptionReshade.Visible = labelOptionReshade.Visible = true;
+            else
+                OptionReshadeVisible = checkBoxOptionReshade.Visible = labelOptionReshade.Visible = false;
+
             if (gameId == 1)
-                checkBoxOptionIndirectSound.Checked = false;
             checkBoxOptionReshade.Checked = false;
-            checkBoxOptionBik.Checked = false;
+            checkBoxOptionBikInst.Checked = true;
+
+            if (gameId == 2)
+            checkBoxOptionReshade.Checked = false;
+            checkBoxOptionBikInst.Checked = true;
 
             buttonSTART.Visible = true;
             buttonNormal.Visible = true;
@@ -348,21 +643,31 @@ namespace MassEffectModder
             customLabelCurrentStatus.Parent = pictureBoxBG;
             labelOptions.Parent = pictureBoxBG;
             labelOptionRepack.Parent = pictureBoxBG;
+            labelOptionBlackCrush.Parent = pictureBoxBG;
             labelOption2kLimit.Parent = pictureBoxBG;
-            labelOptionIndirectSound.Parent = pictureBoxBG;
             labelOptionReshade.Parent = pictureBoxBG;
-            labelOptionBik.Parent = pictureBoxBG;
+            labelOptionBikinst.Parent = pictureBoxBG;
             checkBoxOptionRepack.Parent = pictureBoxBG;
+            checkBoxOptionBlackCrush.Parent = pictureBoxBG;
             checkBoxOption2kLimit.Parent = pictureBoxBG;
-            checkBoxOptionIndirectSound.Parent = pictureBoxBG;
             checkBoxOptionReshade.Parent = pictureBoxBG;
-            checkBoxOptionBik.Parent = pictureBoxBG;
+            checkBoxOptionBikInst.Parent = pictureBoxBG;
             labelModsSelection.Parent = pictureBoxBG;
             comboBoxMod0.Parent = comboBoxMod1.Parent = comboBoxMod2.Parent = comboBoxMod3.Parent = comboBoxMod4.Parent = pictureBoxBG;
             comboBoxMod5.Parent = comboBoxMod6.Parent = comboBoxMod7.Parent = comboBoxMod8.Parent = comboBoxMod9.Parent = pictureBoxBG;
+            comboBoxMod10.Parent = comboBoxMod11.Parent = comboBoxMod12.Parent = comboBoxMod13.Parent = comboBoxMod14.Parent = pictureBoxBG;
+            comboBoxMod15.Parent = comboBoxMod16.Parent = comboBoxMod17.Parent = comboBoxMod18.Parent = comboBoxMod19.Parent = pictureBoxBG;
+            comboBoxMod20.Parent = comboBoxMod21.Parent = comboBoxMod22.Parent = comboBoxMod23.Parent = comboBoxMod24.Parent = pictureBoxBG;
+            comboBoxMod25.Parent = comboBoxMod26.Parent = comboBoxMod27.Parent = comboBoxMod28.Parent = comboBoxMod29.Parent = pictureBoxBG;
+            comboBoxMod30.Parent = comboBoxMod31.Parent = comboBoxMod32.Parent = comboBoxMod33.Parent = comboBoxMod34.Parent = pictureBoxBG;
+            comboBoxMod35.Parent = comboBoxMod36.Parent = comboBoxMod37.Parent = comboBoxMod38.Parent = comboBoxMod39.Parent = pictureBoxBG;
+            comboBoxMod40.Parent = comboBoxMod41.Parent = comboBoxMod42.Parent = comboBoxMod43.Parent = comboBoxMod44.Parent = pictureBoxBG;
+            comboBoxMod45.Parent = comboBoxMod46.Parent = comboBoxMod47.Parent = comboBoxMod48.Parent = comboBoxMod49.Parent = pictureBoxBG;
+            comboBoxMod50.Parent = comboBoxMod51.Parent = comboBoxMod52.Parent = comboBoxMod53.Parent = comboBoxMod54.Parent = pictureBoxBG;
+            comboBoxMod55.Parent = comboBoxMod56.Parent = comboBoxMod57.Parent = comboBoxMod58.Parent = comboBoxMod59.Parent = pictureBoxBG;
             buttonMute.Parent = pictureBoxBG;
 
-            labelOptions.Visible = OptionRepackVisible || Option2kLimitVisible || OptionReshadeVisible || OptionIndirectSoundVisible || OptionBikVisible;
+            labelOptions.Visible = OptionRepackVisible || Option2kLimitVisible || OptionReshadeVisible || OptionBikVisible || OptionBlackCrushVisible;
 
             string bgFile = installerIni.Read("BackgroundImage", "Main").ToLowerInvariant();
             if (bgFile != "")
@@ -608,6 +913,52 @@ namespace MassEffectModder
             return true;
         }
 
+        private bool installBlackCrushFix(string path)
+        {
+            IntPtr handle = IntPtr.Zero;
+            int result;
+            ulong numEntries = 0;
+            string fileName = "";
+            ulong dstLen = 0;
+            ZlibHelper.Zip zip = new ZlibHelper.Zip();
+            try
+            {
+                handle = zip.Open(path, ref numEntries, 0);
+                if (handle == IntPtr.Zero)
+                    throw new Exception();
+                for (uint i = 0; i < numEntries; i++)
+                {
+                    result = zip.GetCurrentFileInfo(handle, ref fileName, ref dstLen);
+                    if (result != 0)
+                        throw new Exception();
+                    
+                    byte[] data = new byte[dstLen];
+                    result = zip.ReadCurrentFile(handle, data, dstLen);
+                    if (result != 0)
+                    {
+                        throw new Exception();
+                    }
+
+                    string filePath = GameData.GamePath + "\\Engine\\Shaders\\" + fileName;
+                    if (File.Exists(filePath))
+                        File.Delete(filePath);
+                    using (FileStream fs = new FileStream(filePath, FileMode.CreateNew))
+                    {
+                        fs.WriteFromBuffer(data);
+                    }
+
+                    zip.GoToNextFile(handle);
+                }
+            }
+            catch
+            {
+                return false;
+            
+            }
+
+            return true;
+        }
+
         private bool installSplashScreen(string path)
         {
             string filePath = GameData.bioGamePath + "\\Splash\\Splash.bmp";
@@ -628,6 +979,23 @@ namespace MassEffectModder
         private bool installSplashVideo(string path)
         {
             string filePath = GameData.MainData + "\\Movies\\db_standard.bik";
+            try
+            {
+                if (File.Exists(filePath))
+                    File.Delete(filePath);
+                File.Copy(path, filePath);
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool installSplashVideo2(string path)
+        {
+            string filePath = GameData.bioGamePath + "\\Movies\\ME_EAsig_720p_v2_raw.bik";
             try
             {
                 if (File.Exists(filePath))
@@ -1305,7 +1673,158 @@ namespace MassEffectModder
                         break;
                     case 10:
                         file = modSelect.files[comboBoxMod9.SelectedIndex];
+                        break;                   
+                    case 11:
+                        file = modSelect.files[comboBoxMod10.SelectedIndex];
                         break;
+                    case 12:
+                        file = modSelect.files[comboBoxMod11.SelectedIndex];
+                        break;
+                    case 13:
+                        file = modSelect.files[comboBoxMod12.SelectedIndex];
+                        break;
+                    case 14:
+                        file = modSelect.files[comboBoxMod13.SelectedIndex];
+                        break;
+                    case 15:
+                        file = modSelect.files[comboBoxMod14.SelectedIndex];
+                        break;
+                    case 16:
+                        file = modSelect.files[comboBoxMod15.SelectedIndex];
+                        break;
+                    case 17:
+                        file = modSelect.files[comboBoxMod16.SelectedIndex];
+                        break;
+                    case 18:
+                        file = modSelect.files[comboBoxMod17.SelectedIndex];
+                        break;
+                    case 19:
+                        file = modSelect.files[comboBoxMod18.SelectedIndex];
+                        break;
+                    case 20:
+                        file = modSelect.files[comboBoxMod19.SelectedIndex];
+                        break;
+                    case 21:
+                        file = modSelect.files[comboBoxMod20.SelectedIndex];
+                        break;
+                    case 22:
+                        file = modSelect.files[comboBoxMod21.SelectedIndex];
+                        break;
+                    case 23:
+                        file = modSelect.files[comboBoxMod22.SelectedIndex];
+                        break;
+                    case 24:
+                        file = modSelect.files[comboBoxMod23.SelectedIndex];
+                        break;
+                    case 25:
+                        file = modSelect.files[comboBoxMod24.SelectedIndex];
+                        break;
+                    case 26:
+                        file = modSelect.files[comboBoxMod25.SelectedIndex];
+                        break;
+                    case 27:
+                        file = modSelect.files[comboBoxMod26.SelectedIndex];
+                        break;
+                    case 28:
+                        file = modSelect.files[comboBoxMod27.SelectedIndex];
+                        break;
+                    case 29:
+                        file = modSelect.files[comboBoxMod28.SelectedIndex];
+                        break;
+                    case 30:
+                        file = modSelect.files[comboBoxMod29.SelectedIndex];
+                        break;
+                    case 31:
+                        file = modSelect.files[comboBoxMod30.SelectedIndex];
+                        break;
+                    case 32:
+                        file = modSelect.files[comboBoxMod31.SelectedIndex];
+                        break;
+                    case 33:
+                        file = modSelect.files[comboBoxMod32.SelectedIndex];
+                        break;
+                    case 34:
+                        file = modSelect.files[comboBoxMod33.SelectedIndex];
+                        break;
+                    case 35:
+                        file = modSelect.files[comboBoxMod34.SelectedIndex];
+                        break;
+                    case 36:
+                        file = modSelect.files[comboBoxMod35.SelectedIndex];
+                        break;
+                    case 37:
+                        file = modSelect.files[comboBoxMod36.SelectedIndex];
+                        break;
+                    case 38:
+                        file = modSelect.files[comboBoxMod37.SelectedIndex];
+                        break;
+                    case 39:
+                        file = modSelect.files[comboBoxMod38.SelectedIndex];
+                        break;
+                    case 40:
+                        file = modSelect.files[comboBoxMod39.SelectedIndex];
+                        break;
+                    case 41:
+                        file = modSelect.files[comboBoxMod40.SelectedIndex];
+                        break;
+                    case 42:
+                        file = modSelect.files[comboBoxMod41.SelectedIndex];
+                        break;
+                    case 43:
+                        file = modSelect.files[comboBoxMod42.SelectedIndex];
+                        break;
+                    case 44:
+                        file = modSelect.files[comboBoxMod43.SelectedIndex];
+                        break;
+                    case 45:
+                        file = modSelect.files[comboBoxMod44.SelectedIndex];
+                        break;
+                    case 46:
+                        file = modSelect.files[comboBoxMod45.SelectedIndex];
+                        break;
+                    case 47:
+                        file = modSelect.files[comboBoxMod46.SelectedIndex];
+                        break;
+                    case 48:
+                        file = modSelect.files[comboBoxMod47.SelectedIndex];
+                        break;
+                    case 49:
+                        file = modSelect.files[comboBoxMod48.SelectedIndex];
+                        break;
+                    case 50:
+                        file = modSelect.files[comboBoxMod49.SelectedIndex];
+                        break;
+                    case 51:
+                        file = modSelect.files[comboBoxMod50.SelectedIndex];
+                        break;
+                    case 52:
+                        file = modSelect.files[comboBoxMod51.SelectedIndex];
+                        break;
+                    case 53:
+                        file = modSelect.files[comboBoxMod52.SelectedIndex];
+                        break;
+                    case 54:
+                        file = modSelect.files[comboBoxMod53.SelectedIndex];
+                        break;
+                    case 55:
+                        file = modSelect.files[comboBoxMod54.SelectedIndex];
+                        break;
+                    case 56:
+                        file = modSelect.files[comboBoxMod55.SelectedIndex];
+                        break;
+                    case 57:
+                        file = modSelect.files[comboBoxMod56.SelectedIndex];
+                        break;
+                    case 58:
+                        file = modSelect.files[comboBoxMod57.SelectedIndex];
+                        break;
+                    case 59:
+                        file = modSelect.files[comboBoxMod58.SelectedIndex];
+                        break;
+                    case 60:
+                        file = modSelect.files[comboBoxMod59.SelectedIndex];
+                        break;
+
                 }
                 selectedFileMods.Add(file);
             }
@@ -1314,22 +1833,42 @@ namespace MassEffectModder
             buttonSTART.Visible = false;
             checkBoxOptionRepack.Visible = labelOptionRepack.Visible = false;
             checkBoxOption2kLimit.Visible = labelOption2kLimit.Visible = false;
-            checkBoxOptionIndirectSound.Visible = labelOptionIndirectSound.Visible = false;
             checkBoxOptionReshade.Visible = labelOptionReshade.Visible = false;
-            checkBoxOptionBik.Visible = labelOptionBik.Visible = false;
+            checkBoxOptionBikInst.Visible = labelOptionBikinst.Visible = false;
+            checkBoxOptionBlackCrush.Visible = labelOptionBlackCrush.Visible = false;
             labelOptions.Visible = false;
             if (meuitmMode)
-                customLabelDesc.Text = "Installing MEUITM for Mass Effect";
+                customLabelDesc.Text = "Installing MEUITM";
             else
-                customLabelDesc.Text = "Installing for Mass Effect " + gameId;
+                customLabelDesc.Text = "Installing for Mass Effect" + gameId;
             comboBoxMod0.Visible = comboBoxMod1.Visible = comboBoxMod2.Visible = comboBoxMod3.Visible = false;
             comboBoxMod4.Visible = comboBoxMod5.Visible = comboBoxMod6.Visible = comboBoxMod7.Visible = false;
-            comboBoxMod8.Visible = comboBoxMod9.Visible = false;
+            comboBoxMod8.Visible = comboBoxMod9.Visible = comboBoxMod10.Visible = comboBoxMod11.Visible = false;
+            comboBoxMod12.Visible = comboBoxMod13.Visible = comboBoxMod14.Visible = comboBoxMod15.Visible = false;
+            comboBoxMod16.Visible = comboBoxMod17.Visible = comboBoxMod18.Visible = comboBoxMod19.Visible = false;
+            comboBoxMod20.Visible = comboBoxMod21.Visible = comboBoxMod22.Visible = comboBoxMod23.Visible = false;
+            comboBoxMod24.Visible = comboBoxMod25.Visible = comboBoxMod26.Visible = comboBoxMod27.Visible = false;
+            comboBoxMod28.Visible = comboBoxMod29.Visible = comboBoxMod30.Visible = comboBoxMod31.Visible = false;
+            comboBoxMod32.Visible = comboBoxMod33.Visible = comboBoxMod34.Visible = comboBoxMod35.Visible = false;
+            comboBoxMod36.Visible = comboBoxMod37.Visible = comboBoxMod38.Visible = comboBoxMod39.Visible = false;
+            comboBoxMod40.Visible = comboBoxMod41.Visible = comboBoxMod42.Visible = comboBoxMod43.Visible = false;
+            comboBoxMod44.Visible = comboBoxMod45.Visible = comboBoxMod46.Visible = comboBoxMod47.Visible = false;
+            comboBoxMod48.Visible = comboBoxMod49.Visible = comboBoxMod50.Visible = comboBoxMod51.Visible = false;
+            comboBoxMod52.Visible = comboBoxMod53.Visible = comboBoxMod54.Visible = comboBoxMod55.Visible = false;
+            comboBoxMod56.Visible = comboBoxMod57.Visible = comboBoxMod58.Visible = comboBoxMod59.Visible = false;
             labelModsSelection.Visible = false;
+            customLabelDesc.Visible = true;
+            customLabelFinalStatus.Visible = true;
+            customLabelCurrentStatus.Visible = true;
 
             if (!PreInstallCheck())
-                return;
+            {
+                customLabelDesc.Visible = false;
+                customLabelFinalStatus.Visible = false;
+                customLabelCurrentStatus.Visible = false;
 
+                return;
+            }
             for (int i = 0; i < selectedFileMods.Count; i++)
             {
                 allMemMods.Remove(selectedFileMods[i]);
@@ -1511,7 +2050,7 @@ namespace MassEffectModder
                 }
             }
 
-            if (gameId == 1 && splashDemiurge != "" && checkBoxOptionBik.Checked)
+            if (gameId == 1 && splashDemiurge != "" && checkBoxOptionBikInst.Checked)
             {
                 if (installSplashVideo(splashDemiurge))
                     log += "Splash video mod installed." + Environment.NewLine + Environment.NewLine;
@@ -1522,27 +2061,47 @@ namespace MassEffectModder
                 }
             }
 
-            if (gameId == 1 && indirectSoundPath != "" && checkBoxOptionIndirectSound.Checked)
+            if (gameId == 2 && splashEA != "" && checkBoxOptionBikInst.Checked)
             {
-                if (installIndirectSoundPath(indirectSoundPath))
-                    log += "Indirect Sound installed." + Environment.NewLine + Environment.NewLine;
+                if (installSplashVideo2(splashEA))
+                    log += "Splash video mod installed." + Environment.NewLine + Environment.NewLine;
                 else
                 {
-                    log += "Indirect Sound failed to install!" + Environment.NewLine + Environment.NewLine;
-                    errors += "Indirect Sound failed to install!\n";
+                    log += "Splash video mod failed to install!" + Environment.NewLine + Environment.NewLine;
+                    errors += "Splash video mod failed to install!\n";
                 }
             }
-            if (gameId == 1 && File.Exists(GameData.GamePath + "\\Binaries\\dsound.dll"))
-                engineConf.Write("DeviceName", "Generic Hardware", "ISACTAudio.ISACTAudioDevice");
+
+            if (gameId == 2 && BlackCrushRemoval != "" && checkBoxOptionBlackCrush.Checked)
+            {
+                if (installBlackCrushFix(BlackCrushRemoval))
+                    log += "Black Crush Removal mod installed." + Environment.NewLine + Environment.NewLine;
+                else
+                {
+                    log += "Black crush Removal mod failed to install!" + Environment.NewLine + Environment.NewLine;
+                    errors += "Black crush Removal mod failed to install!\n";
+                }
+            }
 
             if (gameId == 1 && reshadePath != "" && checkBoxOptionReshade.Checked)
             {
                 if (installReshadePath(reshadePath))
-                    log += "ReShader installed." + Environment.NewLine + Environment.NewLine;
+                    log += "ReShade installed." + Environment.NewLine + Environment.NewLine;
                 else
                 {
-                    log += "ReShader failed to install!" + Environment.NewLine + Environment.NewLine;
-                    errors += "ReShader failed to install!\n";
+                    log += "ReShade failed to install!" + Environment.NewLine + Environment.NewLine;
+                    errors += "ReShade failed to install!\n";
+                }
+            }
+
+            if (gameId == 2 && reshadePath != "" && checkBoxOptionReshade.Checked)
+            {
+                if (installReshadePath(reshadePath))
+                    log += "ReShade installed." + Environment.NewLine + Environment.NewLine;
+                else
+                {
+                    log += "ReShade failed to install!" + Environment.NewLine + Environment.NewLine;
+                    errors += "ReShade failed to install!\n";
                 }
             }
 
@@ -1618,6 +2177,11 @@ namespace MassEffectModder
                     musicPlayer.Stop();
                 }
             }
+        }
+
+        private void Installer_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
